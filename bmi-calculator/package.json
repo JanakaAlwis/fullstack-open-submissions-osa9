@@ -1,12 +1,18 @@
 {
+  "type": "module",
+  "main": "build/index.js",
   "devDependencies": {
+    "@types/express": "^5.0.3",
     "@types/node": "^24.0.7",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
   "scripts": {
-    "calculateBmi": "ts-node bmiCalculator.ts",
-    "calculateExercises": "ts-node exerciseCalculator.ts"
+    "start": "tsc && node build/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only index.mts"
   }
-
 }
