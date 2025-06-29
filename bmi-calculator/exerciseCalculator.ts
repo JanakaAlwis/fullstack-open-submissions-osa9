@@ -39,5 +39,27 @@ export const calculateExercises = (
   };
 };
 
-const result = calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2);
-console.log(result);
+const parseArguments = (args: string[]): [number, number[]] => {
+  if (args.length < 4) throw new Error("At least one target and one exercise value required");
+
+  const target = Number(args[2]);
+  const dailyHours = args.slice(3).map(Number);
+
+  if (isNaN(target) || dailyHours.some((h) => isNaN(h))) {
+    throw new Error("All values must be numbers");
+  }
+
+  return [target, dailyHours];
+};
+
+// Run if executed directly
+if (require.main === module) {
+  try {
+    const [target, dailyHours] = parseArguments(process.argv);
+    console.log(calculateExercises(dailyHours, target));
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Error:", error.message);
+    }
+  }
+}
