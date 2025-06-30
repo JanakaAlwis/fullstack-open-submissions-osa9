@@ -11,6 +11,13 @@ const getPatients = (): NonSensitivePatient[] => {
   }));
 };
 
+// Add this function to add a new patient to the patients array
+const addPatient = (patient: Patient): Patient => {
+  patients.push(patient);
+  return patient;
+};
+
 export default {
-  getPatients
+  getPatients,
+  addPatient,
 };
