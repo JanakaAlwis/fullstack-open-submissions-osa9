@@ -1,23 +1,19 @@
 import patients from '../data/patients';
 import { Patient, NonSensitivePatient } from '../types';
 
-const getPatients = (): NonSensitivePatient[] => {
-  return patients.map(({ id, name, dateOfBirth, gender, occupation }) => ({
-    id,
-    name,
-    dateOfBirth,
-    gender,
-    occupation
-  }));
+const getPatients = () => patients;
+
+const getPatientById = (id: string) => {
+  return patients.find(p => p.id === id);
 };
 
-// Add this function to add a new patient to the patients array
-const addPatient = (patient: Patient): Patient => {
+const addPatient = (patient: Patient) => {
   patients.push(patient);
   return patient;
 };
 
 export default {
   getPatients,
-  addPatient,
+  getPatientById,
+  addPatient
 };
